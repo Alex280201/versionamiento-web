@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #f5f6f8;
+}
+
+/* Navbar */
+.navbar {
+  background: #1a1d23;
+  padding: 0 1rem;
+}
+
+.navbar-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 900px;
+}
+
+.navbar-links a {
+  display: block;
+  padding: 1rem 1.1rem;
+  color: #c9ced6;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #fff;
+}
+
+.navbar-links a.activo {
+  color: #fff;
+  border-bottom-color: #4f8cff;
+}
+
+/* Contenido principal */
+.container {
+  flex: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  color: #111;
+}
+
+a {
+  color: #2563eb;
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+th,
+td {
+  padding: 0.65rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid #e3e6ea;
+}
+
+th {
+  background: #1a1d23;
+  color: #fff;
+  font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+  background: #f8f9fb;
+}
+
+/* Footer */
+.footer {
+  background: #1a1d23;
+  color: #c9ced6;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  font-size: 0.9rem;
+}
