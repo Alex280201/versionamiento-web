@@ -3,11 +3,14 @@ import './styles/recursos.css';
 import './styles/top-commands.css';
 import './styles/ci-calculator.css';
 import './styles/callout.css';
+import './styles/command-level.css';
 import { renderizarNavbar, renderizarFooter } from './components/layout.js';
 import commandsTop10 from './data/commands-top10.json';
+import commandsAll from './data/commands-all.json';
 import { renderTopCommands } from './components/TopCommands.js';
 import { renderCICalculator } from './components/CICalculator.js';
 import { renderCallout } from './components/Callout.js';
+import { renderCommandLevel } from './components/CommandLevel.js';
 
 export const COMANDOS_GIT = [
   { cmd: 'git clone <url>', categoria: 'Remotos', desc: 'Clona el repositorio remoto completo con su historial.' },
@@ -27,10 +30,6 @@ export const COMANDOS_GIT = [
   { cmd: 'git branch -d <rama>', categoria: 'Ramas', desc: 'Elimina localmente una rama ya fusionada.' },
 ];
 
-function escaparHtml(texto) {
-  return texto.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
 export function filtrarComandos(lista, categoria = 'Todos', termino = '') {
   const q = termino.trim().toLowerCase();
   return lista.filter((item) => {
@@ -48,8 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const contenedor = document.querySelector('main.container');
   contenedor.classList.add('recursos');
 
-  const categorias = ['Todos', 'Ramas', 'Cambios', 'Remotos', 'Historial'];
-
   contenedor.innerHTML = `
     <header class="encabezado-recursos">
       <h1>Recursos técnicos del proyecto</h1>
@@ -60,7 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <p>Contenido</p>
       <ol>
         <li><a href="#top-comandos">Top 10 comandos Git</a></li>
-        <li><a href="#comandos">Comandos esenciales de Git</a></li>
+        <li><a href="#comandos">Comandos Git por nivel de uso</a></li>
+        <li><a href="#nivel-esencial">Nivel Esencial (🔥)</a></li>
+        <li><a href="#nivel-frecuente">Nivel Frecuente (⚡)</a></li>
+        <li><a href="#nivel-ocasional">Nivel Ocasional (🧊)</a></li>
         <li><a href="#cuotas">Cuotas de ejecución CI/CD</a></li>
         <li><a href="#calculadora-ci">Calculadora de minutos CI/CD</a></li>
         <li><a href="#estandares">Estándares del repositorio</a></li>
@@ -71,35 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
     <div id="slot-top-comandos"></div>
 
     <section id="comandos">
-      <h2><span class="num">1.</span>Comandos esenciales de Git</h2>
-      <p>Comandos utilizados durante el ciclo <code>feature/*</code> &rarr; <code>develop</code> &rarr; <code>test</code> &rarr; <code>main</code>. Filtra por categoría o copia directamente el comando para tu terminal.</p>
-
-      <div class="controles-filtro">
-        <div class="categorias" role="tablist" aria-label="Filtrar comandos por categoría">
-          ${categorias
-            .map(
-              (cat, i) =>
-                `<button type="button" class="btn-cat ${i === 0 ? 'activo' : ''}" data-cat="${cat}">${cat}</button>`
-            )
-            .join('')}
-        </div>
-        <input type="search" id="buscador-comandos" class="buscador" placeholder="Buscar comando o descripción..." aria-label="Buscar comando Git" />
-      </div>
-
-      <div class="tabla">
-        <table>
-          <caption><strong>Tabla 1.</strong> Referencia rápida de comandos Git del equipo.</caption>
-          <thead>
-            <tr>
-              <th scope="col">Comando</th>
-              <th scope="col">Categoría</th>
-              <th scope="col">Propósito</th>
-              <th scope="col">Acción</th>
-            </tr>
-          </thead>
-          <tbody id="tabla-comandos-body"></tbody>
-        </table>
-      </div>
+      <h2><span class="num">1.</span>Comandos Git organizados por nivel de uso</h2>
+      <p>Todos los comandos del flujo <code>feature/*</code> &rarr; <code>develop</code> &rarr; <code>test</code> &rarr; <code>main</code> clasificados en tres niveles según su frecuencia operativa.</p>
+      <div id="slot-niveles-comandos"></div>
     </section>
 
     <section id="cuotas">
@@ -173,56 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </section>
   `;
 
-  let categoriaActiva = 'Todos';
-  const tbody = document.getElementById('tabla-comandos-body');
-  const buscador = document.getElementById('buscador-comandos');
-
   renderTopCommands(document.getElementById('slot-top-comandos'), commandsTop10);
+  renderCommandLevel(document.getElementById('slot-niveles-comandos'), commandsAll);
   renderCICalculator(document.getElementById('slot-calculadora-ci'));
-
-  function renderizarTabla() {
-    const filtrados = filtrarComandos(COMANDOS_GIT, categoriaActiva, buscador.value);
-    if (filtrados.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="4">No se encontraron comandos con ese filtro.</td></tr>';
-      return;
-    }
-
-    tbody.innerHTML = filtrados
-      .map(
-        (item) => `
-      <tr>
-        <td><code>${escaparHtml(item.cmd)}</code></td>
-        <td>${item.categoria}</td>
-        <td>${item.desc}</td>
-        <td><button type="button" class="btn-copiar" data-cmd="${escaparHtml(item.cmd)}">Copiar</button></td>
-      </tr>
-    `
-      )
-      .join('');
-
-    tbody.querySelectorAll('.btn-copiar').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        navigator.clipboard?.writeText(btn.dataset.cmd);
-        const original = btn.textContent;
-        btn.textContent = 'Copiado';
-        btn.classList.add('copiado');
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.classList.remove('copiado');
-        }, 1200);
-      });
-    });
-  }
-
-  contenedor.querySelectorAll('.btn-cat').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      contenedor.querySelectorAll('.btn-cat').forEach((b) => b.classList.remove('activo'));
-      btn.classList.add('activo');
-      categoriaActiva = btn.dataset.cat;
-      renderizarTabla();
-    });
-  });
-
-  buscador.addEventListener('input', renderizarTabla);
-  renderizarTabla();
 });
