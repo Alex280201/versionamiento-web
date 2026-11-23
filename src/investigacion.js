@@ -23,16 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
     <nav class="indice" aria-label="Contenido de la investigación">
       <p>Contenido</p>
       <ol>
-        <li><a href="#diferencias">1. Diferencias de modelo</a></li>
-        <li><a href="#despliegue">2. Despliegue en cada plataforma</a></li>
-        <li><a href="#reglas">3. Reglas de protección</a></li>
-        <li><a href="#variables">4. Variables y gestión de despliegues</a></li>
-        <li><a href="#comandos">5. Comandos principales</a></li>
-        <li><a href="#educacion">6. Cuentas educativas</a></li>
-        <li><a href="#hallazgos">7. Hallazgos de la implementación</a></li>
-        <li><a href="#seleccion">8. Criterios de selección</a></li>
-        <li><a href="#conclusiones">9. Conclusiones</a></li>
-        <li><a href="#referencias">10. Referencias</a></li>
+        <li><a href="#diferencias">Diferencias de modelo</a></li>
+        <li><a href="#despliegue">Despliegue en cada plataforma</a></li>
+        <li><a href="#reglas">Reglas de protección</a></li>
+        <li><a href="#variables">Variables y gestión de despliegues</a></li>
+        <li><a href="#comandos">Comandos principales</a></li>
+        <li><a href="#educacion">Cuentas educativas</a></li>
+        <li><a href="#hallazgos">Hallazgos de la implementación</a></li>
+        <li><a href="#seleccion">Criterios de selección</a></li>
+        <li><a href="#conclusiones">Conclusiones</a></li>
+        <li><a href="#referencias">Referencias</a></li>
       </ol>
     </nav>
 
