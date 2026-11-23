@@ -1,9 +1,12 @@
 import './styles/style.css';
 import './styles/informe.css';
 import './styles/branch-models.css';
+import './styles/conventional-chart.css';
 import { renderizarNavbar, renderizarFooter } from './components/layout.js';
 import branchModelsData from './data/branch-models.json';
+import conventionalData from './data/conventional-commits.json';
 import { renderBranchModelBadges } from './components/BranchModelBadges.js';
+import { renderConventionalChart } from './components/ConventionalChart.js';
 
 // Enlaces usados en la página (se definen una sola vez para no repetirlos)
 const REPO_GRUPO = 'https://github.com/sampedro2002/versionamiento-web';
@@ -136,15 +139,17 @@ document.addEventListener('DOMContentLoaded', () => {
             <tr><th scope="col">Tipo</th><th scope="col">Uso</th><th scope="col">Ejemplo</th></tr>
           </thead>
           <tbody>
-            <tr><td><code>feat</code></td><td>Nueva funcionalidad o contenido</td><td><code>feat(informe): agrega el flujo de ramas</code></td></tr>
-            <tr><td><code>fix</code></td><td>Corrección de un error</td><td><code>fix(informe): corrige un enlace</code></td></tr>
-            <tr><td><code>docs</code></td><td>Documentación</td><td><code>docs: actualiza el README</code></td></tr>
-            <tr><td><code>style</code></td><td>Estilos sin cambio de lógica</td><td><code>style(informe): ajusta las tablas</code></td></tr>
-            <tr><td><code>ci</code></td><td>Pipelines y automatización</td><td><code>ci: agrega validación en pull requests</code></td></tr>
-            <tr><td><code>chore</code></td><td>Tareas de mantenimiento</td><td><code>chore: actualiza .gitignore</code></td></tr>
+            <tr id="cc-feat"><td><code>feat</code></td><td>Nueva funcionalidad o contenido</td><td><code>feat(informe): agrega el flujo de ramas</code></td></tr>
+            <tr id="cc-fix"><td><code>fix</code></td><td>Corrección de un error</td><td><code>fix(informe): corrige un enlace</code></td></tr>
+            <tr id="cc-docs"><td><code>docs</code></td><td>Documentación</td><td><code>docs: actualiza el README</code></td></tr>
+            <tr id="cc-style"><td><code>style</code></td><td>Estilos sin cambio de lógica</td><td><code>style(informe): ajusta las tablas</code></td></tr>
+            <tr id="cc-ci"><td><code>ci</code></td><td>Pipelines y automatización</td><td><code>ci: agrega validación en pull requests</code></td></tr>
+            <tr id="cc-test"><td><code>test</code></td><td>Pruebas automatizadas</td><td><code>test(web): agrega pruebas unitarias</code></td></tr>
+            <tr id="cc-chore"><td><code>chore</code></td><td>Tareas de mantenimiento</td><td><code>chore: actualiza .gitignore</code></td></tr>
           </tbody>
         </table>
       </div>
+      <div id="slot-conventional-chart"></div>
     </section>
 
     <section id="reglas">
@@ -238,4 +243,5 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
 
   renderBranchModelBadges(document.getElementById('slot-badges-ramas'), branchModelsData);
+  renderConventionalChart(document.getElementById('slot-conventional-chart'), conventionalData);
 });
