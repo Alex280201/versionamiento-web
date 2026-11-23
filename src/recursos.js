@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <section style="max-width: 960px; margin: 2rem auto; padding: 2rem; border: 1px solid #cbd5e1; border-radius: 12px; background: #ffffff;">
       <header style="border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem;">
         <h1 style="font-size: 1.9rem; color: #0f172a; margin-bottom: 0.4rem;">Recursos Técnicos y Guía Rápida de Git</h1>
-        <p style="color: #475569;">Arquitectura de Software · Grupo 2 · Aporte: Ernesto Alexander Chicango Brusil</p>
+        <p>Comandos Git del flujo colaborativo, cuotas de CI/CD, estándares y solución de errores · Arquitectura de Software · Grupo 2</p>
       </header>
 
       <h2 style="font-size: 1.3rem; color: #1e40af; margin-bottom: 0.75rem;">1. Los 15 comandos esenciales del flujo colaborativo</h2>
