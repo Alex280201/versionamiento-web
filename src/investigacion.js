@@ -1,6 +1,9 @@
 import './styles/style.css';
 import './styles/investigacion.css';
+import './styles/command-search.css';
 import { renderizarNavbar, renderizarFooter } from './components/layout.js';
+import commandsAll from './data/commands-all.json';
+import { renderCommandSearch } from './components/CommandSearch.js';
 
 const REPO_GITHUB = 'https://github.com/sampedro2002/versionamiento-web';
 const WORKFLOW_SYNC = `${REPO_GITHUB}/blob/main/.github/workflows/sync-gitlab.yml`;
@@ -261,6 +264,7 @@ jobs:
           </tbody>
         </table>
       </div>
+      <div id="slot-buscador-comandos"></div>
     </section>
 
     <section id="educacion">
@@ -437,4 +441,6 @@ jobs:
       <p class="nota">Los planes, cuotas y beneficios citados corresponden a noviembre de 2026 y pueden cambiar.</p>
     </section>
   `;
+
+  renderCommandSearch(document.getElementById('slot-buscador-comandos'), commandsAll);
 });
