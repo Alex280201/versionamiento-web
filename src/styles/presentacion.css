@@ -1,0 +1,130 @@
+/* Estilos propios de la página Presentación.
+   Todas las reglas empiezan con .presentacion para no afectar a las demás páginas. */
+
+.presentacion {
+  --tinta: #1a1d23;
+  --gris: #5b6470;
+  --linea: #e3e6ea;
+  --suave: #f5f6f8;
+  --acento: #2563eb;
+  --acento-claro: #eef3fe;
+  max-width: 1100px;
+}
+
+.presentacion .ayuda { margin: 0 0 1rem; font-size: .88rem; color: var(--gris); }
+
+.presentacion .lamina {
+  position: relative;
+  min-height: 520px;
+  padding: 3.5rem 3rem 3rem;
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.presentacion .lamina[hidden] { display: none; }
+
+.presentacion .seccion-lamina {
+  position: absolute;
+  top: 1.1rem;
+  left: 3rem;
+  right: 3rem;
+  margin: 0;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--linea);
+  font-size: .8rem;
+  color: var(--gris);
+}
+.presentacion .numero-lamina {
+  position: absolute;
+  right: 1.25rem;
+  bottom: .9rem;
+  font-size: .8rem;
+  color: var(--gris);
+}
+
+.presentacion .lamina h1 { font-size: 2.4rem; margin: 0 0 1rem; line-height: 1.2; }
+.presentacion .lamina h2 { font-size: 1.7rem; margin: 0 0 1.25rem; }
+.presentacion .lamina h3 { font-size: 1.1rem; margin: 0 0 .5rem; }
+.presentacion .lamina li { margin-bottom: .45rem; }
+.presentacion .grande { font-size: 1.2rem; color: var(--tinta); max-width: 46ch; }
+.presentacion .nota { font-size: .88rem; color: var(--gris); margin-top: 1rem; }
+
+.presentacion .portada { border-top: 6px solid var(--acento); justify-content: flex-end; }
+.presentacion .integrantes { color: var(--gris); margin-top: 1.5rem; }
+
+.presentacion .cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.presentacion .cifras .valor { font-size: 2.6rem; font-weight: 700; color: var(--acento); margin: 0; }
+.presentacion .cifras p { margin: .25rem 0 0; color: var(--gris); }
+
+.presentacion .dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+
+.presentacion .flujo { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .5rem 0 1rem; }
+.presentacion .flujo span {
+  padding: .5rem .8rem;
+  border: 1px solid var(--acento);
+  background: var(--acento-claro);
+  border-radius: 4px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: .9rem;
+}
+.presentacion .flujo b { color: var(--gris); font-weight: 400; }
+
+.presentacion pre {
+  background: #16191d;
+  color: #e4e7ea;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: .85rem;
+  line-height: 1.5;
+}
+.presentacion code { font-family: ui-monospace, Consolas, monospace; font-size: .9em; }
+.presentacion p code, .presentacion li code, .presentacion td code {
+  background: var(--suave);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.presentacion .destacado {
+  border-left: 4px solid var(--acento);
+  background: var(--acento-claro);
+  padding: .75rem 1rem;
+  border-radius: 0 6px 6px 0;
+}
+.presentacion .destacado p { margin: 0; }
+
+.presentacion .tabla { overflow-x: auto; }
+.presentacion td.cifra, .presentacion th.cifra { text-align: right; white-space: nowrap; }
+
+.presentacion .controles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+.presentacion .controles button {
+  padding: .45rem 1rem;
+  border: 1px solid var(--linea);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--tinta);
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+}
+.presentacion .controles button:hover { border-color: var(--acento); color: var(--acento); }
+.presentacion .controles output { min-width: 4.5rem; text-align: center; color: var(--gris); font-size: .9rem; }
+
+/* Pantalla completa: solo se muestra la lámina */
+.presentacion:fullscreen { max-width: none; padding: 2rem; background: #fff; overflow: auto; }
+.presentacion:fullscreen .lamina { min-height: calc(100vh - 8rem); border: 0; }
+
+@media (max-width: 760px) {
+  .presentacion .lamina { padding: 3.5rem 1.25rem 2.5rem; min-height: 0; }
+  .presentacion .seccion-lamina { left: 1.25rem; right: 1.25rem; }
+  .presentacion .cifras, .presentacion .dos-columnas { grid-template-columns: 1fr; }
+}
