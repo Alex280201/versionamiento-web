@@ -2,10 +2,12 @@ import './styles/style.css';
 import './styles/inicio.css';
 import { renderizarNavbar, renderizarFooter } from './components/layout.js';
 
+// Enlaces al repositorio principal y a los sitios publicados en Cloudflare Pages
 const REPO_GITHUB = 'https://github.com/sampedro2002/versionamiento-web';
 const SITIO_GITHUB = 'https://versionamiento-web-github.pages.dev/';
 const SITIO_GITLAB = 'https://versionamiento-web-gitlab.pages.dev/';
 
+// Etapas del flujo de trabajo en Git utilizadas en el selector interactivo
 const ETAPAS_FLUJO = [
   {
     id: 'feature',
@@ -59,6 +61,7 @@ const ETAPAS_FLUJO = [
   },
 ];
 
+// Tarjetas de acceso directo a las secciones de la aplicación multipágina
 const SECCIONES = [
   {
     tag: 'Documentación',
@@ -175,9 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
     </section>
   `;
 
+  // Inicializa las referencias del selector interactivo de etapas
   const panelDetalle = document.getElementById('flujo-detalle');
   const botones = contenedor.querySelectorAll('.flujo-paso');
 
+  // Actualiza el panel de detalle con la información de la etapa seleccionada
   function mostrarEtapa(id) {
     const etapa = ETAPAS_FLUJO.find((e) => e.id === id) || ETAPAS_FLUJO[0];
     panelDetalle.innerHTML = `
@@ -188,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // Gestiona el cambio de pestaña activa y accesibilidad (aria-selected) al hacer clic
   botones.forEach((btn) => {
     btn.addEventListener('click', () => {
       botones.forEach((b) => {
@@ -200,5 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Muestra la primera etapa por defecto al cargar la página
   mostrarEtapa(ETAPAS_FLUJO[0].id);
 });
