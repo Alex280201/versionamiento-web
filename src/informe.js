@@ -4,7 +4,7 @@ import { renderizarNavbar, renderizarFooter } from './components/layout.js';
 
 // Enlaces usados en la página (se definen una sola vez para no repetirlos)
 const REPO_GRUPO = 'https://github.com/sampedro2002/versionamiento-web';
-const SITIO_GH = 'https://versionamiento-web-gh.pages.dev/';
+const SITIO_GH = 'https://versionamiento-web-github.pages.dev/';
 const SITIO_GL = 'https://versionamiento-web-gitlab.pages.dev/';
 const PROTOTIPO = 'https://github.com/jhon-avila135/investigacion-versionamiento';
 const PROTOTIPO_SITIO_GH = 'https://jhon-avila135.github.io/investigacion-versionamiento/';
@@ -145,22 +145,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     <section id="reglas">
       <h2><span class="num">5.</span>Reglas de protección</h2>
-      <p>Las reglas de protección impiden que un cambio llegue a una rama importante sin revisión. Para este repositorio se proponen las siguientes:</p>
+      <p>Las reglas de protección impiden que un cambio llegue a una rama importante sin revisión. El repositorio tiene configurados dos rulesets: uno para <code>main</code> y otro para <code>test</code> y <code>develop</code>.</p>
       <div class="tabla">
         <table>
-          <caption>Tabla 3. Reglas propuestas por rama.</caption>
+          <caption>Tabla 3. Reglas configuradas por rama.</caption>
           <thead>
             <tr><th scope="col">Rama</th><th scope="col">Regla</th><th scope="col">Estado</th></tr>
           </thead>
           <tbody>
-            <tr><td><code>main</code></td><td>Pull request obligatorio, validación aprobada, sin force push ni borrado</td><td><span class="estado propuesta">Propuesta</span></td></tr>
-            <tr><td><code>test</code></td><td>Pull request obligatorio y validación aprobada</td><td><span class="estado propuesta">Propuesta</span></td></tr>
-            <tr><td><code>develop</code></td><td>Pull request obligatorio y validación aprobada</td><td><span class="estado propuesta">Propuesta</span></td></tr>
+            <tr><td><code>main</code></td><td>Pull request con dos aprobaciones; las aprobaciones se invalidan si llegan nuevos commits; sin force push ni borrado</td><td><span class="estado hecho">Activa</span></td></tr>
+            <tr><td><code>test</code></td><td>Pull request con una aprobación; sin force push ni borrado</td><td><span class="estado hecho">Activa</span></td></tr>
+            <tr><td><code>develop</code></td><td>Pull request con una aprobación; sin force push ni borrado</td><td><span class="estado hecho">Activa</span></td></tr>
+            <tr><td>Todas</td><td>Compilación del sitio aprobada antes de fusionar (check obligatorio)</td><td><span class="estado propuesta">En incorporación</span></td></tr>
           </tbody>
         </table>
       </div>
+      <p>Con estas reglas ningún integrante puede integrar su propio cambio sin la revisión de otro, y la rama de producción exige el acuerdo de dos personas.</p>
       <div class="destacado">
-        <p><strong>Evidencia del prototipo.</strong> En el <a href="${PROTOTIPO}/pull/3" target="_blank" rel="noopener">PR #3</a> se eliminó a propósito el texto alternativo de una imagen: la validación falló y GitHub bloqueó la fusión. La misma configuración puede aplicarse a este repositorio.</p>
+        <p><strong>Evidencia del prototipo.</strong> En el <a href="${PROTOTIPO}/pull/3" target="_blank" rel="noopener">PR #3</a> se eliminó a propósito el texto alternativo de una imagen: la validación falló y GitHub bloqueó la fusión. El mismo mecanismo de check obligatorio se incorpora a este repositorio.</p>
       </div>
     </section>
 
