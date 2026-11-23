@@ -1,6 +1,9 @@
 import './styles/style.css';
 import './styles/recursos.css';
+import './styles/top-commands.css';
 import { renderizarNavbar, renderizarFooter } from './components/layout.js';
+import commandsTop10 from './data/commands-top10.json';
+import { renderTopCommands } from './components/TopCommands.js';
 
 export const COMANDOS_GIT = [
   { cmd: 'git clone <url>', categoria: 'Remotos', desc: 'Clona el repositorio remoto completo con su historial.' },
@@ -52,12 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
     <nav class="indice" aria-label="Contenido de recursos">
       <p>Contenido</p>
       <ol>
+        <li><a href="#top-comandos">Top 10 comandos Git</a></li>
         <li><a href="#comandos">Comandos esenciales de Git</a></li>
         <li><a href="#cuotas">Cuotas de ejecución CI/CD</a></li>
         <li><a href="#estandares">Estándares del repositorio</a></li>
         <li><a href="#errores">Problemas frecuentes y solución</a></li>
       </ol>
     </nav>
+
+    <div id="slot-top-comandos"></div>
 
     <section id="comandos">
       <h2><span class="num">1.</span>Comandos esenciales de Git</h2>
@@ -158,6 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let categoriaActiva = 'Todos';
   const tbody = document.getElementById('tabla-comandos-body');
   const buscador = document.getElementById('buscador-comandos');
+
+  renderTopCommands(document.getElementById('slot-top-comandos'), commandsTop10);
 
   function renderizarTabla() {
     const filtrados = filtrarComandos(COMANDOS_GIT, categoriaActiva, buscador.value);
