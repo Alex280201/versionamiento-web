@@ -1,6 +1,9 @@
 import './styles/style.css';
 import './styles/informe.css';
+import './styles/branch-models.css';
 import { renderizarNavbar, renderizarFooter } from './components/layout.js';
+import branchModelsData from './data/branch-models.json';
+import { renderBranchModelBadges } from './components/BranchModelBadges.js';
 
 // Enlaces usados en la página (se definen una sola vez para no repetirlos)
 const REPO_GRUPO = 'https://github.com/sampedro2002/versionamiento-web';
@@ -111,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <section id="flujo">
       <h2><span class="num">4.</span>Flujo de trabajo en Git</h2>
       <p>El grupo aplica una versión simplificada de GitFlow. Cada integrante crea su rama desde <code>develop</code>, registra sus cambios con mensajes de Conventional Commits y solicita la integración mediante un pull request.</p>
+      <div id="slot-badges-ramas"></div>
       <div class="tabla">
         <table>
           <caption>Tabla 1. Ramas del repositorio y su función.</caption>
@@ -232,4 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </section>
   `;
+
+  renderBranchModelBadges(document.getElementById('slot-badges-ramas'), branchModelsData);
 });
