@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <h3><span class="num">2.1</span>Flujo del proyecto: GitHub Actions y Cloudflare Pages</h3>
       <p>En este proyecto (<code>versionamiento-web</code>), construido como aplicación multipágina con <strong>Vite</strong> y <strong>pnpm</strong> (<code>index.html</code>, <code>informe.html</code>, <code>investigacion.html</code>, <code>presentacion.html</code> y <code>recursos.html</code>), GitHub actúa como repositorio principal. Cada aporte sigue el flujo <code>feature/*</code> &rarr; <code>develop</code> &rarr; <code>test</code> &rarr; <code>main</code>.</p>
-      <p>Un workflow de GitHub Actions (<a href="${WORKFLOW_SYNC}" target="_blank" rel="noopener"><code>sync-gitlab.yml</code></a>) replica automáticamente las ramas <code>main</code>, <code>develop</code> y <code>test</code> hacia GitLab en cada <code>push</code>, utilizando el secreto <code>GITLAB_TOKEN</code>:</p>
+      <p>Un workflow de GitHub Actions (<a href="${WORKFLOW_SYNC}" target="_blank" rel="noopener"><code>sync-gitlab.yml</code></a>) se dispara ante cada <code>push</code> a <code>main</code>, <code>develop</code> o <code>test</code> y replica en GitLab todas las ramas disponibles en <code>origin</code> (eliminando con <code>--prune</code> las que ya no existan), utilizando el secreto <code>GITLAB_TOKEN</code>:</p>
       <pre><code>on:
   push:
     branches: [main, develop, test]
