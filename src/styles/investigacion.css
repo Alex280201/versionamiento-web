@@ -1,0 +1,142 @@
+/* Estilos propios de la página Investigación.
+   Todas las reglas empiezan con .investigacion para no afectar a las demás páginas. */
+
+.investigacion {
+  --tinta: #1a1d23;
+  --gris: #5b6470;
+  --linea: #e3e6ea;
+  --suave: #f5f6f8;
+  --acento: #2563eb;
+  --acento-claro: #eef3fe;
+}
+
+.investigacion .encabezado-investigacion {
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.investigacion .encabezado-investigacion h1 {
+  margin: 0 0 0.4rem;
+  font-size: 2rem;
+}
+
+.investigacion .encabezado-investigacion p {
+  margin: 0;
+  color: var(--gris);
+}
+
+.investigacion .indice {
+  background: var(--suave);
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.investigacion .indice p {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.investigacion .indice ol {
+  margin: 0;
+  padding-left: 1.25rem;
+  columns: 2;
+}
+
+.investigacion .indice a {
+  text-decoration: none;
+}
+
+.investigacion section {
+  margin-bottom: 2.25rem;
+}
+
+.investigacion h2 {
+  font-size: 1.4rem;
+  margin: 0 0 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.investigacion h2 .num,
+.investigacion h3 .num {
+  color: var(--gris);
+  font-weight: 400;
+  margin-right: 0.4rem;
+}
+
+.investigacion h3 {
+  font-size: 1.05rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.investigacion caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.85rem;
+  color: var(--gris);
+  padding-bottom: 0.4rem;
+}
+
+.investigacion .tabla {
+  overflow-x: auto;
+}
+
+.investigacion code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--suave);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.investigacion pre {
+  background: #1a1d23;
+  color: #e5e7eb;
+  padding: 1rem 1.15rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  line-height: 1.5;
+  margin: 1rem 0;
+}
+
+.investigacion pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: 0.88rem;
+}
+
+.investigacion .destacado {
+  border-left: 4px solid var(--acento);
+  background: var(--acento-claro);
+  padding: 0.75rem 1rem;
+  border-radius: 0 6px 6px 0;
+  margin: 1rem 0;
+}
+
+.investigacion .destacado p {
+  margin: 0;
+}
+
+.investigacion dl dt {
+  font-weight: 600;
+  margin-top: 0.9rem;
+}
+
+.investigacion dl dd {
+  margin: 0.2rem 0 0;
+  color: #333a44;
+}
+
+.investigacion .nota {
+  font-size: 0.88rem;
+  color: var(--gris);
+}
+
+@media (max-width: 640px) {
+  .investigacion .indice ol {
+    columns: 1;
+  }
+}

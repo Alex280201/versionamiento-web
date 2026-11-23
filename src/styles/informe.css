@@ -1,0 +1,98 @@
+/* Estilos propios de la página Informe.
+   Todas las reglas empiezan con .informe para no afectar a las demás páginas. */
+
+.informe {
+  --tinta: #1a1d23;
+  --gris: #5b6470;
+  --linea: #e3e6ea;
+  --suave: #f5f6f8;
+  --acento: #2563eb;
+  --acento-claro: #eef3fe;
+  --alerta: #a14d0b;
+  --ok: #1f7a3d;
+}
+
+.informe .encabezado-informe {
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.informe .encabezado-informe h1 { margin: 0 0 .4rem; font-size: 2rem; }
+.informe .encabezado-informe p { margin: 0; color: var(--gris); }
+
+.informe .indice {
+  background: var(--suave);
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+}
+.informe .indice p { margin: 0 0 .5rem; font-weight: 600; }
+.informe .indice ol { margin: 0; padding-left: 1.25rem; columns: 2; }
+.informe .indice a { text-decoration: none; }
+
+.informe section { margin-bottom: 2.25rem; }
+.informe h2 { font-size: 1.4rem; margin: 0 0 .75rem; padding-top: .5rem; }
+.informe h2 .num { color: var(--gris); font-weight: 400; margin-right: .4rem; }
+.informe h3 { font-size: 1.05rem; margin: 1.25rem 0 .5rem; }
+
+.informe caption {
+  caption-side: top;
+  text-align: left;
+  font-size: .85rem;
+  color: var(--gris);
+  padding-bottom: .4rem;
+}
+.informe td.cifra, .informe th.cifra { text-align: right; white-space: nowrap; }
+
+.informe figure { margin: 1.25rem 0; }
+.informe figure svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  background: #fff;
+}
+.informe figcaption { font-size: .85rem; color: var(--gris); margin-top: .5rem; }
+
+.informe code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: .9em;
+  background: var(--suave);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.informe .destacado {
+  border-left: 4px solid var(--acento);
+  background: var(--acento-claro);
+  padding: .75rem 1rem;
+  border-radius: 0 6px 6px 0;
+  margin: 1rem 0;
+}
+.informe .destacado p { margin: 0; }
+
+.informe dl dt { font-weight: 600; margin-top: .9rem; }
+.informe dl dd { margin: .2rem 0 0; color: #333a44; }
+
+.informe .estado { white-space: nowrap; font-size: .9rem; }
+.informe .estado::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+  background: var(--gris);
+}
+.informe .estado.hecho::before { background: var(--ok); }
+.informe .estado.propuesta::before { background: var(--alerta); }
+
+.informe .nota { font-size: .88rem; color: var(--gris); }
+
+@media (max-width: 640px) {
+  .informe .indice ol { columns: 1; }
+}
+
+.informe .tabla { overflow-x: auto; }
