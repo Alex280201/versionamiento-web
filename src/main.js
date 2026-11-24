@@ -91,6 +91,7 @@ const SECCIONES = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('pagina-inicio');
   renderizarNavbar();
   renderizarFooter();
 
