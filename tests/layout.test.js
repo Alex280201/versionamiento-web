@@ -102,3 +102,12 @@ test('style.css mantiene el layout de .container sin estilos de tarjeta (card)',
   assert.doesNotMatch(bloqueContainer[0], /box-shadow/);
   assert.doesNotMatch(bloqueContainer[0], /border-radius/);
 });
+
+test('inicio oculta el navbar por defecto y lo muestra al pasar el cursor', () => {
+  const mainJs = readFileSync(resolve(RAIZ, 'src/main.js'), 'utf8');
+  const inicioCss = readFileSync(resolve(RAIZ, 'src/styles/inicio.css'), 'utf8');
+
+  assert.match(mainJs, /document\.body\.classList\.add\('pagina-inicio'\)/);
+  assert.match(inicioCss, /body\.pagina-inicio \.navbar\s*\{[\s\S]*opacity:\s*0;[\s\S]*transform:\s*translateY\(-100%\)/);
+  assert.match(inicioCss, /body\.pagina-inicio \.navbar:hover[\s\S]*opacity:\s*1;[\s\S]*transform:\s*translateY\(0\)/);
+});
